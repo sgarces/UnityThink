@@ -9,7 +9,7 @@ namespace Think
 			// TODO:
 			return false;
 		}
-		
+
 		
 		public override bool IsLeaf() 
 		{ 

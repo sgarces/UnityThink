@@ -3,7 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Think {
-
+	
+	// IDEA: Run the perception all at once from the Manager
+	// Unity doesn't let anything run outside of GameObjects, but
+	// the Manager can update the Perception in one LateUpdate, and have it 
+	// ready for the next frame 
 	public class Perception 
 	{
 		Brain mBrain;

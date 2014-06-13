@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Reflection;
 
 namespace Think
 {
@@ -41,6 +43,14 @@ namespace Think
 		// Use this for initialization
 		void Start ()
 		{
+			Type type = Type.GetType("Mono.Runtime");
+			if (type != null)
+			{                                          
+			    MethodInfo displayName = type.GetMethod("GetDisplayName", BindingFlags.NonPublic | BindingFlags.Static);
+			    if (displayName != null)                   
+			        Debug.Log(displayName.Invoke(null, null)); 
+			}			
+			
 			mPerception = new Perception(gameObject, this, mKnowledge);
 			Sequence n = new Sequence();
 			//n.FindBindings();

@@ -33,7 +33,7 @@ namespace Think
 		}
 		
 
-		private float Normalize(float val, float min, float max)
+		public static float Normalize(float val, float min, float max)
 		{
 			if (max - min < 1e-5f)
 			{

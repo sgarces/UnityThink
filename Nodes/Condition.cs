@@ -4,7 +4,7 @@ namespace Think
 {
 	public abstract class Condition
 	{
-		public abstract bool TestCondition(KB kb);
+		public abstract float TestCondition(KB kb);
 	}
 }
 

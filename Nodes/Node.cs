@@ -48,6 +48,8 @@ namespace Think
 			mBinding = new Binding(this.GetType());
 		}
 		
+		List<Condition> mConditions = new List<Condition>();
+		List<Action> mActions = new List<Action>();
 		
 		// Instead of calling TestCondition every frame using polling,
 		// the Node allows listeners to register with AddOnTrue.
@@ -62,7 +64,23 @@ namespace Think
 		// NOTE: if there is any binding to be done, we can't do the trigger
 		// as we need to search for a good combination of variables,
 		// so we must resort to polling (re-planning)
-		public virtual bool TestCondition(KB kb) { return true; }
+		public virtual bool TestCondition(KB kb) 
+		{ 
+			for (int i=0; i<mConditions.Count; ++i)
+			{
+				if (mConditions[i].TestCondition(kb) == 0.0f)
+					return false;
+			}
+			return true;
+		}
+		
+		// NOTE: Should we have a different set of conditions
+		// to decide whether we should CONTINUE running the Node
+		// So we can implement hysteresis?
+		public virtual bool ShouldAbort(KB kb)
+		{
+			return false;
+		}
 		
 		public delegate void OnTrue(Node node);
 		public void AddOnTrue(OnTrue listener) 

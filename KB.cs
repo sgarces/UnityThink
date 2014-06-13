@@ -57,6 +57,11 @@ namespace Think {
 				mUniverse[type] = new List<object>();
 			mUniverse[type].Add(obj);
 		}
+		
+		public bool HasEventTriggered(string eventName)
+		{
+			return false;
+		}
 	}
 }
 
